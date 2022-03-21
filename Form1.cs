@@ -23,7 +23,7 @@ namespace WindowsFormsApp17
             Random rand = new Random();
             for (int i = 0; i < 20; i++)
             {
-                Mas[i] = rand.Next()/1000000;
+                Mas[i] = rand.Next() / 1000000;
                 listBox1.Items.Add("Mas[" + i.ToString() + "] = " + Mas[i].ToString());
             }
         }
@@ -31,22 +31,21 @@ namespace WindowsFormsApp17
         private void button2_Click(object sender, EventArgs e)
         {
             listBox2.Items.Clear();
-             int Max = Mas[0];
-            int j = 0;
+            int Max = 0;
+            for (int i = 1; i < 20; i++)
+            {
+                if (Mas[Max] < Mas[i])
+                    Max = i;
+            }
+            int temp = Mas[Max];
+            Mas[Max] = Mas[0];
+            Mas[0] = temp;
             for (int i = 0; i < 20; i++)
             {
-                int first = Mas[0];
-                if (Max < Mas[i])
-                { Max = Mas[i];
-                    
-                }
-                int temp  = Max ;
-                Max = first;
-                first = temp; 
                 listBox2.Items.Add("Mas[" + Convert.ToString(i) + "] = " + Mas[i].ToString());
 
             }
         }
     }
-    }
+}
 
